@@ -49,30 +49,28 @@ UIkit.upload('.js-upload', {
         setTimeout(function () {
             bar.setAttribute('hidden', 'hidden');
         }, 1000);
+        
 
-        alert('Upload Completed');
     }
 
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+probs.style.display = "none";
 
 // Initialize the Image Classifier method with MobileNet
-// ml5.imageClassifier('MobileNet')
-//   .then(classifier => classifier.classify(image))
-//   .then(results => {
-//     result.innerText = results[0].label;
-//     probability.innerText = results[0].confidence.toFixed(4);
-//   });
+ml5.imageClassifier('MobileNet')
+  .then(classifier => classifier.classify(image))
+  .then(results => {
+    result.innerText = results[0].label;
+    probability.innerText = results[0].confidence.toFixed(4);
+    probs.style.display = "block";
+
+    if (results[0].confidence.toFixed(4) < 0.5) {
+      result.style.color = "#da924e";
+    } if (results[0].confidence.toFixed(4) < 0.1) {
+      result.style.color = "#ea526f";
+    }
+  });
+
+  
