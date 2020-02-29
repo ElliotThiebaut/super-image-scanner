@@ -2,8 +2,9 @@
     width: 100vw;
 }
 #image{
-    height: 300px;
-    width: 300px;
+    height: auto;
+    width: auto;
+    max-height: 600px;
 }
 #result{
     color: #95ee7c;
